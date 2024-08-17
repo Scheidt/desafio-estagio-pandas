@@ -1,4 +1,6 @@
-import csv
+import pandas as pd
+
+ARQUIVO_CSV = 'medicoes_eletricas.csv'
 
 '''
 1 - Leitura e Análise de Arquivo CSV:
@@ -14,32 +16,11 @@ d) Identificar e exibir o valor máximo de tensão (Tensao_V) registrado e em qu
 
 '''
 
-with open('medicoes_eletricas.csv', newline='') as database:
-    dados = csv.reader(database, delimiter=',')
+data = pd.read_csv(ARQUIVO_CSV)
+print(data.head(5))
 
-    nLinhas = 0 
-    potenciaTotal = 0
-    tensao_max = {"val": 0, "data": 0}
+potencia_media = data["Potencia_W"].mean()
+print(f"A potência média foi de {potencia_media:.2f} Watts")
 
-    titulo = True
-
-        #Data,Potencia_W,Tensao_V,Corrente_A,Frequencia_Hz
-    for linha in dados:
-        print(f"{linha[0]:^20}|{linha[1]:^12}|{linha[2]:^14}|{linha[3]:^18}|{linha[4]:^16}" + '\n')
-        if titulo: # Essa é uma escolha estilística e reduz a performance do programa, caso performance for prioridade, pode ser removida
-            print("========================================================================================")
-            titulo = False
-        else:
-            print("----------------------------------------------------------------------------------------")
-        nLinhas += 1
-        try:
-            potenciaTotal += int(linha[1])
-            if int(linha[2]) > tensao_max["val"]:
-                tensao_max["val"] = int(linha[2])
-                tensao_max["data"] = linha[0]
-        except:
-            pass
-    print("---")
-    print(f"A potência média foi de {potenciaTotal/nLinhas:.2f} Watts")
-    print(f"Valor máximo de tensão V: {tensao_max["val"]} Volts, lido em {tensao_max["data"]}")
-    
+tensao_maxima = data.iloc[data["Tensao_V"].idxmax()]
+print(f"Valor máximo de tensão V: {tensao_maxima["Tensao_V"]} Volts, lido em {tensao_maxima["Data"]}")

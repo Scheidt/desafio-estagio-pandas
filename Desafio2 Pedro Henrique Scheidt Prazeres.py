@@ -1,4 +1,7 @@
 import pandas as pd
+from datetime import timedelta
+
+ARQUIVO_CSV = 'medicoes_eletricas.csv'
 
 '''
 2 - Manipulação de Dados com Pandas
@@ -14,14 +17,13 @@ b) Exibir todos os registros onde a frequência (Frequencia_Hz) esteja fora da f
 # O enunciado pede para verificar "monitoramento_eletrico.csv", assumo que isso é um erro, pois o nome do csv fornecido é "medicoes_eletricas.csv"
 # portanto, eu modifiquei para "medicoes_eletricas.csv"
 
-ARQUIVO_CSV = 'medicoes_eletricas.csv'
-VAL_MIN = 59.8
-VAL_MAX = 60.2
+data = pd.read_csv(ARQUIVO_CSV)
 
+FREQUENCIA_MIN = 59.8
+FREQUENCIA_MAX = 60.2
 
-df = pd.read_csv(ARQUIVO_CSV)
+frequencias = data["Frequencia_Hz"]
 
-filtros = (df['Frequencia_Hz'] < VAL_MIN) | (df['Frequencia_Hz'] > VAL_MAX)
-outliers = df[filtros]
+filtros = (frequencias < FREQUENCIA_MIN) | (frequencias > FREQUENCIA_MAX)
+outliers = data[filtros]
 print(outliers)
-
