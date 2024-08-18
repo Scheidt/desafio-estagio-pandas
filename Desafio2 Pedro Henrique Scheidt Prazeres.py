@@ -1,6 +1,7 @@
 import pandas as pd
-from datetime import timedelta
 
+# O enunciado pede para verificar "monitoramento_eletrico.csv", assumo que isso é um erro, pois o nome do csv fornecido é "medicoes_eletricas.csv"
+# portanto, eu modifiquei para "medicoes_eletricas.csv"
 ARQUIVO_CSV = 'medicoes_eletricas.csv'
 FREQUENCIA_MIN = 59.8
 FREQUENCIA_MAX = 60.2
@@ -16,8 +17,6 @@ b) Exibir todos os registros onde a frequência (Frequencia_Hz) esteja fora da f
 
 '''
 
-# O enunciado pede para verificar "monitoramento_eletrico.csv", assumo que isso é um erro, pois o nome do csv fornecido é "medicoes_eletricas.csv"
-# portanto, eu modifiquei para "medicoes_eletricas.csv"
 
 try:
     data = pd.read_csv(ARQUIVO_CSV)

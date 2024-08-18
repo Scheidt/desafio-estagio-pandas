@@ -1,6 +1,8 @@
 import pandas as pd
 from datetime import timedelta
 
+# O enunciado pede para verificar "monitoramento_eletrico.csv", assumo que isso é um erro, pois o nome do csv fornecido é "medicoes_eletricas.csv"
+# portanto, eu modifiquei para "medicoes_eletricas.csv"
 ARQUIVO_CSV = 'medicoes_eletricas.csv'
 
 '''
