@@ -28,8 +28,8 @@ else:
     print(data.head(5))
     print("")
 
-    potencia_media = data["Potencia_W"].mean()
+    potencia_media = data['Potencia_W'].mean()
     print(f"A potência média foi de {potencia_media:.2f} Watts")
 
-    tensao_maxima = data.iloc[data["Tensao_V"].idxmax()]
-    print(f"Valor máximo de tensão V: {tensao_maxima["Tensao_V"]} Volts, lido em {tensao_maxima["Data"]}")
+    tensao_maxima = data.iloc[data['Tensao_V'].idxmax()]
+    print(f"Valor máximo de tensão V: {tensao_maxima['Tensao_V']} Volts, lido em {tensao_maxima['Data']}")

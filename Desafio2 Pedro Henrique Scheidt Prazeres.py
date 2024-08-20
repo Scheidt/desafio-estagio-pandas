@@ -24,7 +24,7 @@ except FileNotFoundError:
     print(f"Arquivo não encontrado, verifique o nome do arquivo. Nome do arquivo fornecido: {ARQUIVO_CSV}")
 else:
 
-    frequencias = data["Frequencia_Hz"]
+    frequencias = data['Frequencia_Hz']
 
     filtros = (frequencias < FREQUENCIA_MIN) | (frequencias > FREQUENCIA_MAX)
     outliers = data[filtros]
